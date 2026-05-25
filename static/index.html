@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Travel Planner - Your Smart Concierge</title>
+    <meta name="description" content="Plan your perfect trip with our intelligent AI travel concierge.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Marked.js for rendering markdown -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+    <div class="background-elements">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+
+    <div class="layout-wrapper">
+        <!-- Sidebar for History -->
+        <aside class="sidebar glass-panel">
+            <h2 class="sidebar-title">🕰️ Travel History</h2>
+            <div id="historyList" class="history-list">
+                <!-- History items injected via JS -->
+            </div>
+            <button id="clearHistoryBtn" class="secondary-btn hidden">Clear History</button>
+        </aside>
+
+        <!-- Main Application Content -->
+        <main class="app-container">
+            <header class="hero-section">
+                <div class="vehicles-animation">
+                    <span class="vehicle">✈️</span>
+                    <span class="vehicle">🚆</span>
+                    <span class="vehicle">🚌</span>
+                    <span class="vehicle">🚗</span>
+                    <span class="vehicle">🚢</span>
+                </div>
+                <h1 class="gradient-text">AI Travel Planner</h1>
+                <p class="subtitle">Your personal, intelligent travel concierge</p>
+            </header>
+
+            <section class="input-section">
+                <form id="queryForm" class="glass-panel form-panel">
+                    <p class="prompt-text">Map out your next great adventure!</p>
+                    
+                    <div class="route-container">
+                        <div class="input-column">
+                            <label for="origin" class="input-label">Start</label>
+                            <input type="text" id="origin" placeholder="e.g. New York" required autocomplete="off">
+                        </div>
+                        
+                        <div class="route-animation-area">
+                            <div class="route-line"></div>
+                            <div class="animated-vehicle airplane">✈️</div>
+                            <div class="animated-vehicle bus">🚌</div>
+                        </div>
+
+                        <div class="input-column">
+                            <label for="destination" class="input-label">Destination</label>
+                            <input type="text" id="destination" placeholder="e.g. Goa" required autocomplete="off">
+                        </div>
+                    </div>
+                    
+                    <div class="additional-details">
+                        <label for="details" class="input-label">Additional Details (Optional)</label>
+                        <input type="text" id="details" placeholder="e.g. 5 days, romantic, budget-friendly" autocomplete="off">
+                    </div>
+
+                    <button type="submit" id="submitBtn" class="primary-btn">
+                        <span class="btn-text">Generate Itinerary 🌟</span>
+                    </button>
+                </form>
+            </section>
+
+            <!-- Premium Loading State -->
+            <section id="loadingSection" class="loading-section hidden">
+                <div class="glass-panel result-card">
+                    <div class="loading-header">
+                        <div class="loading-spinner"></div>
+                        <h3 id="loadingText" class="loading-text">Initializing AI agent...</h3>
+                    </div>
+                    <div class="skeleton-loader">
+                        <div class="skeleton-title"></div>
+                        <div class="skeleton-line"></div>
+                        <div class="skeleton-line"></div>
+                        <div class="skeleton-line short"></div>
+                        <div class="skeleton-box"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Results State -->
+            <section id="resultsSection" class="results-section hidden">
+                <div class="glass-panel result-card">
+                    <div class="result-header">
+                        <h2 class="result-title" id="resultTitle">✨ Your Travel Itinerary</h2>
+                        <div class="result-meta">
+                            Generated: <span id="generateTime"></span><br>
+                            By Toppo's Travel Agent
+                        </div>
+                    </div>
+                    <div id="resultContent" class="markdown-content">
+                        <!-- Markdown content goes here -->
+                    </div>
+                    <div class="result-footer">
+                        *This travel plan was generated by AI. Please verify all information, especially prices, operating hours, and travel requirements before your trip.*
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
